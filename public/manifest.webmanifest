@@ -1,0 +1,61 @@
+{
+  "name": "Havesay",
+  "short_name": "Havesay",
+  "description": "Your whole ballot, explained. Nonpartisan voter-candidate matching. Your answers and plan stay on your device.",
+  "id": "/guide",
+  "start_url": "/guide?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fafaf7",
+  "theme_color": "#1a2f5c",
+  "categories": ["news", "education", "government", "utilities"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Booth mode",
+      "url": "/booth?source=pwa_shortcut",
+      "description": "Your big-type checklist to take into the voting booth"
+    },
+    {
+      "name": "My ballot",
+      "url": "/guide?source=pwa_shortcut",
+      "description": "Open your ballot, matches, and plan"
+    },
+    {
+      "name": "Look up my ballot",
+      "url": "/quick-match",
+      "description": "Enter your address and start matching to candidates"
+    },
+    {
+      "name": "Submit a correction",
+      "url": "/corrections",
+      "description": "Help us fix or fill gaps in candidate data"
+    }
+  ]
+}

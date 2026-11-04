@@ -1,0 +1,12 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Havesay">
+  <!--
+    PLACEHOLDER maskable lettermark. Full-bleed background with the glyph
+    inside the Android adaptive-icon safe zone (~80% center circle), so it
+    survives circle/squircle masking. Same "real icon pending" caveat as
+    icon-source.svg (DEFINITION-OF-WORKING item 6).
+  -->
+  <rect width="1024" height="1024" fill="#1a2f5c"/>
+  <text x="512" y="512" text-anchor="middle" dominant-baseline="central"
+        font-family="Georgia, 'Times New Roman', serif" font-weight="700"
+        font-size="440" fill="#fafaf7">H</text>
+</svg>

@@ -1,0 +1,59 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (the example file is committed)
+.env*
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+
+# local runtime data written by the app (logs, caches, labels, evidence)
+/data/
+/pm2-logs/
+
+# scratch files
+/tmp_*
+/_*.html
+/_*.log
+/_*.txt
+/.scratch/
+
+# other dependency, cache and build folders
+.venv/
+venv/
+__pycache__/
+dist/
+target/
+.pytest_cache/
+.mypy_cache/

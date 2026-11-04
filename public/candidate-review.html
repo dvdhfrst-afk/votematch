@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Candidate Research Progress — Havesay</title>
+<!-- Same-origin fetch: this page (served by Next at /candidate-review.html)
+     pulls its data from /api/dashboards/research-progress, which returns the
+     fully-rendered embed-mode markup. No regeneration cron, no checked-in
+     snapshot — always live. -->
+<style>
+  @import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,600,700,800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap');
+
+  /* Civic tokens — mirror app/src/app/globals.css so the embed-mode CSS
+     (which references --civic-*) renders correctly outside the Next app
+     layout. This is the minimum set the dashboard uses. */
+  :root {
+    --civic-surface:        #ffffff;
+    --civic-surface-muted:  #f6f5f1;
+    --civic-surface-sunken: #eeece6;
+    --civic-text:           #1a1917;
+    --civic-text-secondary: #3e3b36;
+    --civic-text-muted:     #57544d;
+    --civic-border:         #d5d3cc;
+    --civic-border-strong:  #a8a69f;
+    --civic-primary:        #1a2f5c;
+    --civic-primary-soft:   #e2e6ee;
+    --civic-accent:         #8b2e2e;
+    --state-success-fg:#1e6b3f; --state-success-bg:#e4f2ea; --state-success-bd:#a6cfb6;
+    --state-warn-fg:#8a5a14;    --state-warn-bg:#fbf0d9;    --state-warn-bd:#e3c582;
+    --state-error-fg:#8b2e2e;   --state-error-bg:#f5e1de;   --state-error-bd:#d19a95;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--civic-surface-muted);
+    color: var(--civic-text);
+    font: 16px/1.6 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .civic-stripe {
+    height: 3px;
+    background: var(--civic-accent);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .crumb {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 24px 32px 0;
+    font-family: 'Geist Mono', ui-monospace, Menlo, monospace;
+    font-size: 12px;
+    letter-spacing: .04em;
+    color: var(--civic-text-muted);
+    text-transform: uppercase;
+  }
+  .crumb a { color: var(--civic-primary); text-decoration: none; border-bottom: 1px dotted var(--civic-border-strong); padding-bottom: 1px; }
+  .crumb .freshness {
+    float: right;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .crumb .freshness.live { color: var(--state-success-fg); }
+  .crumb .freshness.loading { color: var(--civic-text-muted); }
+  .crumb .freshness.error { color: var(--state-error-fg); }
+
+  #shell-loading, #shell-error {
+    max-width: 80rem;
+    margin: 24px auto;
+    padding: 32px;
+    font-family: 'Geist', system-ui, sans-serif;
+    color: var(--civic-text-secondary);
+  }
+  #shell-error {
+    background: var(--state-error-bg);
+    border: 1px solid var(--state-error-bd);
+    color: var(--state-error-fg);
+    border-radius: 8px;
+  }
+
+  /* Skeleton loading state — shows the layout while data fetches */
+  .skeleton-stat-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:20px 0; }
+  @media (max-width:820px){ .skeleton-stat-grid{grid-template-columns:repeat(2,1fr);} }
+  .skeleton-stat { height:88px; background:var(--civic-surface); border:1px solid var(--civic-border); border-radius:8px; opacity:.5; animation: pulse 1.4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity:.4; } 50% { opacity:.7; } }
+</style>
+</head>
+<body>
+<div class="civic-stripe" aria-hidden="true"></div>
+<div class="crumb">
+  <a href="/">← Havesay</a>
+  <span class="freshness loading" id="freshness">loading…</span>
+</div>
+<div id="dashboard">
+  <div id="shell-loading">
+    <h1 style="font-family:'Cabinet Grotesk',system-ui,sans-serif;font-size:38px;letter-spacing:-.025em;margin:0 0 12px">Candidate Research Progress</h1>
+    <p style="font-family:'Source Serif 4',Georgia,serif;font-size:18px;color:var(--civic-text)">Loading live data from <code>/api/dashboards/research-progress</code>…</p>
+    <div class="skeleton-stat-grid">
+      <div class="skeleton-stat"></div><div class="skeleton-stat"></div>
+      <div class="skeleton-stat"></div><div class="skeleton-stat"></div>
+      <div class="skeleton-stat"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  /**
+   * Fetch the API and inject the markup using createContextualFragment
+   * (the key trick — this DOES execute embedded <script> tags, where
+   * innerHTML does not, so the dashboard's sort/filter/click JS runs).
+   */
+  (async function loadDashboard() {
+    const fresh = document.getElementById('freshness');
+    const container = document.getElementById('dashboard');
+    const started = Date.now();
+    try {
+      const res = await fetch('/api/dashboards/research-progress', {
+        credentials: 'same-origin',
+        // Trust the server Cache-Control; no need to no-store on every load.
+      });
+      if (!res.ok) {
+        const body = await res.text();
+        container.innerHTML = '<div id="shell-error"><b>API ' + res.status + '</b><br>' + body.slice(0, 1000) + '</div>';
+        fresh.textContent = 'error';
+        fresh.className = 'freshness error';
+        return;
+      }
+      const html = await res.text();
+      const range = document.createRange();
+      range.selectNodeContents(container);
+      const fragment = range.createContextualFragment(html);
+      container.innerHTML = '';
+      container.appendChild(fragment);
+      const took = ((Date.now() - started) / 1000).toFixed(1);
+      const now = new Date().toLocaleTimeString();
+      fresh.textContent = 'live · loaded ' + now + ' (' + took + 's)';
+      fresh.className = 'freshness live';
+    } catch (err) {
+      container.innerHTML = '<div id="shell-error"><b>Network error</b><br>' + (err && err.message || err) + '</div>';
+      fresh.textContent = 'error';
+      fresh.className = 'freshness error';
+    }
+  })();
+</script>
+</body>
+</html>
