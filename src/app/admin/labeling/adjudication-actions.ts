@@ -4,8 +4,8 @@
 // /admin/labeling?mode=adjudicate: Server Actions for the adjudication surface.
 //
 // The operator's adjudication picks are HUMAN labels: they append to
-// labels-david-f.jsonl via the SAME submitLabel action the normal tool uses
-// (annotator "david-f"), so mergeLabels keeps treating david-f as the human
+// labels-operator.jsonl via the SAME submitLabel action the normal tool uses
+// (annotator "operator"), so mergeLabels keeps treating operator as the human
 // authority. We do NOT introduce a second write path.
 //
 // The two agent judgments are served ONLY through revealAgentJudgments, which

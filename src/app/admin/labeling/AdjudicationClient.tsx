@@ -18,7 +18,7 @@ import {
 // context exactly as the normal tool shows them, then commits a band. ONLY
 // AFTER that pick do the two agent annotators' bands + rationales appear, with
 // whether his pick matched each; he then advances. His picks are human labels:
-// they append to labels-david-f.jsonl through the shared submitLabel action.
+// they append to labels-operator.jsonl through the shared submitLabel action.
 //
 // Two live gauges sit in the header: disputed-resolved progress and, tracked
 // separately, the audit-sample agreement rate (the operator's band vs the consensus
@@ -26,7 +26,7 @@ import {
 // needs that audit agreement at or above 90 percent.
 // ---------------------------------------------------------------------------
 
-const ANNOTATOR = "david-f";
+const ANNOTATOR = "operator";
 const AUDIT_GATE = 0.9;
 const PREFETCH_AHEAD = 5;
 const PREFETCH_BEHIND = 1;

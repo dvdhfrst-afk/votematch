@@ -136,7 +136,7 @@ const OFFICIAL_PRIMARY_HOSTS = new Set([
   'ssanpete.org',           // South Sanpete School District Board (/district-information/board-of-education/members.html)
   'gunnisoncityutah.org',   // Gunnison City mayor & council (operator: gunnisoncity.org is dead; this is the real site)
   'monticelloutah.org',     // Monticello City official site (operator-verified)
-  'castlevalleyutah.com',   // Town of Castle Valley official site (eyes-on 2026-06-04: contacts page names Mayor Jazmine Duncan)
+  'castlevalleyutah.com',   // Town of Castle Valley official site (eyes-on 2026-06-04: contacts page names the mayor)
   // TODO (review each before adding — do not guess the domain):
   //   Guam Legislature, CNMI Legislature, American Samoa Fono, Puerto Rico
   //   (PR uses *.pr.gov which already passes the .gov check).

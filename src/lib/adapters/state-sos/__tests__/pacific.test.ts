@@ -67,7 +67,7 @@ const WA_HOUSE_HTML = `<!doctype html><html><body>
   <h2>U.S. Representative, 9th Congressional District</h2>
   <table>
     <tr><th>Candidate</th><th>Party Preference</th><th>Votes</th><th>Percent</th></tr>
-    <tr><td>Jim Johnson</td><td>Dem</td><td>120,000</td><td>45.0%</td></tr>
+    <tr><td>Jim Sampleford</td><td>Dem</td><td>120,000</td><td>45.0%</td></tr>
     <tr><td>Kate Lee</td><td>Rep</td><td>95,000</td><td>35.5%</td></tr>
     <tr><td>Morgan Park</td><td>Dem</td><td>35,000</td><td>13.1%</td></tr>
     <tr><td>Nora Stone</td><td>Ind</td><td>17,000</td><td>6.4%</td></tr>
@@ -79,7 +79,7 @@ const WA_CSV = `Race,BallotName,PartyPreference,Votes
 State Senate District 5,Alan Black,Dem,50000
 State Senate District 5,Brenda Cole,Rep,47000
 State Senate District 5,Carlos Diaz,Dem,12000
-State Senate District 5,Dan Evans,Lib,5000`;
+State Senate District 5,Dan Exampleton,Lib,5000`;
 
 /** AK — top-four primary fixture (US Senate, 5 candidates). */
 const AK_SENATE_HTML = `<!doctype html><html><body>
@@ -190,7 +190,7 @@ describe('WA results adapter (top-two + multi-format)', () => {
     });
     assert.equal(rows.length, 4);
     const winners = rows.filter((r) => r.is_winner).map((r) => r.reported_name);
-    assert.deepEqual(winners.sort(), ['Jim Johnson', 'Kate Lee']);
+    assert.deepEqual(winners.sort(), ['Jim Sampleford', 'Kate Lee']);
     // Morgan (2nd Democrat) should NOT be a winner.
     const morgan = rows.find((r) => r.reported_name === 'Morgan Park');
     assert.equal(morgan?.is_winner, false);

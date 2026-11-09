@@ -244,7 +244,7 @@ export function mergeLabels(records: RawLabelRecord[]): Map<string, MergedLabel>
 // audit sample of consensus pairs.
 //
 // CALIBRATION-GRADE label (what the threshold search is allowed to trust):
-//   1. HUMAN (david-f) labels win, always, for any pair (highest precedence).
+//   1. HUMAN (operator) labels win, always, for any pair (highest precedence).
 //   2. the CONSENSUS band for a consensus pair that carries NO human label
 //      (i.e. it was not overturned in the audit; an overturned audit pair has a
 //      human label, which wins via rule 1).
@@ -280,7 +280,7 @@ export interface CalibrationGradeLabel {
 
 /**
  * assembleCalibrationGrade(consensus, humanBands): build the calibration-grade
- * label set. `humanBands` maps pair_id -> human band (1..4) from labels-david-f
+ * label set. `humanBands` maps pair_id -> human band (1..4) from labels-operator
  * (skip rows excluded by the caller). Human labels win; otherwise a consensus
  * pair contributes its agreed band. Disputed-without-human and incomparable
  * pairs contribute nothing. Deterministic and pure.

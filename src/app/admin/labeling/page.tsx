@@ -1,7 +1,7 @@
 import LabelingClient from "./LabelingClient";
 import AdjudicationClient from "./AdjudicationClient";
 import { readQueueIndex, pairsByIds, proposalsForIds } from "./data";
-import { readAdjudicationQueue, adjudicationPairs, davidAdjudicationProgress } from "./adjudication";
+import { readAdjudicationQueue, adjudicationPairs, operatorAdjudicationProgress } from "./adjudication";
 
 // The queue + labels are files on disk; never cache this surface.
 export const dynamic = "force-dynamic";
@@ -103,7 +103,7 @@ function AdjudicationView() {
     );
   }
 
-  const { resolved, auditTotal, disputedTotal } = davidAdjudicationProgress();
+  const { resolved, auditTotal, disputedTotal } = operatorAdjudicationProgress();
 
   // Seed the window at the operator's first un-adjudicated pair so resume is instant.
   const resolvedIds = new Set(resolved.map((r) => r.pair_id));

@@ -258,7 +258,7 @@ const CANDIDATES: CandidateSeed[] = [
     raceKey: 'us_senate',
     bio: 'Former state legislator and business owner from Provo. Served two terms in the Utah House representing District 62.',
     published: true,
-    seedId: 'bb-seed-001-margaret-hansen',
+    seedId: 'bb-seed-001-margaret-sampleton',
   },
   {
     name: 'Carlos Fictivo',
@@ -266,7 +266,7 @@ const CANDIDATES: CandidateSeed[] = [
     raceKey: 'us_senate',
     bio: 'Civil rights attorney and community organizer from Salt Lake City. Founded the Utah Civic Engagement Coalition.',
     published: true,
-    seedId: 'bb-seed-002-carlos-medina',
+    seedId: 'bb-seed-002-carlos-fictivo',
   },
 
   // US House UT-1 (2)
@@ -276,7 +276,7 @@ const CANDIDATES: CandidateSeed[] = [
     raceKey: 'us_house_1',
     bio: 'Retired Air Force colonel and Logan city council member. Advocates for veterans and rural communities.',
     published: true,
-    seedId: 'bb-seed-003-david-erickson',
+    seedId: 'bb-seed-003-dana-exampleson',
   },
   {
     name: 'Sarah Placeholder',
@@ -284,7 +284,7 @@ const CANDIDATES: CandidateSeed[] = [
     raceKey: 'us_house_1',
     bio: 'Small business owner from Ogden running on fiscal conservatism and education reform.',
     published: true,
-    seedId: 'bb-seed-004-sarah-whitfield',
+    seedId: 'bb-seed-004-sarah-placeholder',
   },
 
   // Governor (2)
@@ -294,7 +294,7 @@ const CANDIDATES: CandidateSeed[] = [
     raceKey: 'ut_governor',
     bio: 'Current Lt. Governor with a background in tech entrepreneurship. Focused on economic growth and infrastructure.',
     published: true,
-    seedId: 'bb-seed-005-robert-tanner',
+    seedId: 'bb-seed-005-robin-testwell',
   },
   {
     name: 'Linda Mockwood',
@@ -302,7 +302,7 @@ const CANDIDATES: CandidateSeed[] = [
     raceKey: 'ut_governor',
     bio: 'Environmental scientist and former Salt Lake County mayor. Priorities include clean air and water policy.',
     published: true,
-    seedId: 'bb-seed-006-linda-nakamura',
+    seedId: 'bb-seed-006-linda-mockwood',
   },
 
   // State Senate District 17 (2)
@@ -312,7 +312,7 @@ const CANDIDATES: CandidateSeed[] = [
     raceKey: 'ut_senate_17',
     bio: 'Attorney and local business leader in Roy. Active in community planning for northern Davis and Weber counties.',
     published: true,
-    seedId: 'bb-seed-007-james-callister',
+    seedId: 'bb-seed-007-jamie-notreal',
   },
   {
     name: 'Priya Demoname',
@@ -320,7 +320,7 @@ const CANDIDATES: CandidateSeed[] = [
     raceKey: 'ut_senate_17',
     bio: 'High school principal and education advocate. Campaigning on bipartisan solutions for school funding.',
     published: true,
-    seedId: 'bb-seed-008-priya-sharma',
+    seedId: 'bb-seed-008-priya-demoname',
   },
 
   // Weber County Commission (2)
@@ -330,7 +330,7 @@ const CANDIDATES: CandidateSeed[] = [
     raceKey: 'weber_commission',
     bio: 'Rancher and small business owner from Huntsville. Focused on water rights and county spending.',
     published: true,
-    seedId: 'bb-seed-009-tom-wheeler',
+    seedId: 'bb-seed-009-tom-fixture',
   },
   {
     name: 'Angela Fakerly',
@@ -338,7 +338,7 @@ const CANDIDATES: CandidateSeed[] = [
     raceKey: 'weber_commission',
     bio: 'Non-profit director from Ogden working on housing affordability and public transit access.',
     published: true,
-    seedId: 'bb-seed-010-angela-reyes',
+    seedId: 'bb-seed-010-angela-fakerly',
   },
 ];
 

@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS governing_bodies (
     -- [{ url, title, kind, accessed_at }, ...]
   last_verified_at TIMESTAMPTZ,
   verified_by TEXT,
-    -- 'manual:david' / 'agent:wikipedia-bootstrap-v1' / 'phase2:derived'
+    -- 'manual:operator' / 'agent:wikipedia-bootstrap-v1' / 'phase2:derived'
 
   -- Audit
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),

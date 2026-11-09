@@ -4,7 +4,7 @@
  * PoolOptIn (work-order Phase 3B, part 2, step 2) -- the preview-first opt-in UI
  * for the signal pool.
  *
- * DAVID'S LOCKED LANGUAGE: the pool is "an encrypted, anonymous pool of what
+ * LOCKED LANGUAGE: the pool is "an encrypted, anonymous pool of what
  * voters tell us." No polling jargon (no "panel", no "respondents"). The copy
  * here uses that family of language deliberately (memory: language-avoid-polling-
  * jargon).

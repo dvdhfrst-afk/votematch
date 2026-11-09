@@ -25,7 +25,7 @@ import { GOLDEN_DIR, latestLabelsByPair, type QueuePair, pairsByIds } from "./da
 import { isBandN, type BandN } from "./bands";
 
 export const CONSENSUS_FILE = join(GOLDEN_DIR, "consensus-2026-07.json");
-export const DAVID_ANNOTATOR = "david-f";
+export const HUMAN_ANNOTATOR = "operator";
 export const PROPOSAL_ANNOTATOR = "agent-proposal";
 export const SKEPTIC_ANNOTATOR = "agent-skeptic";
 
@@ -142,7 +142,7 @@ export interface AdjProgress {
  * with per-audit-pair match against the consensus band, plus the queue's audit
  * and disputed totals. Seeds the client so live counters resume correctly.
  */
-export function davidAdjudicationProgress(): AdjProgress {
+export function operatorAdjudicationProgress(): AdjProgress {
   const queue = readAdjudicationQueue();
   const reasonById = new Map<string, AdjudicationReason>(queue.map((q) => [q.pair_id, q.reason]));
   let auditTotal = 0;
@@ -152,9 +152,9 @@ export function davidAdjudicationProgress(): AdjProgress {
     else disputedTotal++;
   }
 
-  const davidLabels = latestLabelsByPair(DAVID_ANNOTATOR);
+  const operatorLabels = latestLabelsByPair(HUMAN_ANNOTATOR);
   const resolved: AdjResolvedSeed[] = [];
-  for (const [pairId, rec] of davidLabels) {
+  for (const [pairId, rec] of operatorLabels) {
     const reason = reasonById.get(pairId);
     if (!reason) continue; // only queue pairs count toward adjudication progress
     let matched: boolean | null = null;

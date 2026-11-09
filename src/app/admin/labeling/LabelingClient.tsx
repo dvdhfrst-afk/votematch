@@ -423,7 +423,7 @@ export default function LabelingClient({
                 setAnnotator(nameInput.trim());
               }
             }}
-            placeholder="e.g. david"
+            placeholder="e.g. reviewer-1"
             className="w-full px-3 py-2 rounded border border-[var(--civic-border-strong)] bg-[var(--civic-surface)] text-[var(--civic-text)]"
           />
           <button
@@ -887,7 +887,7 @@ function ProfileScreen({
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="e.g. david"
+            placeholder="e.g. reviewer-1"
             className="w-full px-3 py-2 rounded border border-[var(--civic-border-strong)] bg-[var(--civic-surface)] text-[var(--civic-text)]"
           />
           <p className="text-xs text-[var(--civic-text-muted)] mt-1">
